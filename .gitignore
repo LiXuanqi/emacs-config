@@ -1,0 +1,28 @@
+# Emacs temporary files
+*~
+*.elc
+\#*\#
+.\#*
+
+# Auto-save and backup files
+auto-save-list/
+\#*
+.saves-*
+
+# Package archives and compiled files
+elpa/
+
+# History and state files
+history
+recentf.eld
+projects.eld
+transient/
+
+# Shell history
+eshell/history
+
+# Custom files
+custom.el
+
+# Temporary directories
+eshell/
