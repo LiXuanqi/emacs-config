@@ -11,6 +11,10 @@
   (add-to-list 'native-comp-jit-compilation-deny-list "general\\.el\\'"))
 (when (boundp 'native-comp-deferred-compilation-deny-list)
   (add-to-list 'native-comp-deferred-compilation-deny-list "general\\.el\\'"))
+(when (boundp 'native-comp-jit-compilation-deny-list)
+  (add-to-list 'native-comp-jit-compilation-deny-list "org-roam\\(?:-.*\\)?\\.el\\'"))
+(when (boundp 'native-comp-deferred-compilation-deny-list)
+  (add-to-list 'native-comp-deferred-compilation-deny-list "org-roam\\(?:-.*\\)?\\.el\\'"))
 
 (defvar bootstrap-version)
 (let ((bootstrap-file

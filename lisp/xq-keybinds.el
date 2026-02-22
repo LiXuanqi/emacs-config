@@ -27,10 +27,14 @@
     "pf" '(project-find-file :which-key "find file")
     "pd" '(project-find-dir :which-key "find dir")
     "n"  '(:ignore t :which-key "notes")
-    "nn" '(xq/org-open-today-note :which-key "today note")
-    "ni" '(xq/org-open-inbox :which-key "inbox")
+    "nn" '(org-roam-dailies-goto-today :which-key "today daily")
     "na" '(org-agenda :which-key "agenda")
-    "nc" '(org-capture :which-key "capture")))
+    "nr" '(:ignore t :which-key "roam")
+    "nrf" '(org-roam-node-find :which-key "find node")
+    "nri" '(org-roam-node-insert :which-key "insert node")
+    "nrc" '(org-roam-capture :which-key "capture node")
+    "nrt" '(org-roam-dailies-capture-today :which-key "daily todo")
+    "nrb" '(org-roam-buffer-toggle :which-key "toggle buffer")))
 
 (provide 'xq-keybinds)
 ;;; xq-keybinds.el ends here

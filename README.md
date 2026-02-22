@@ -46,13 +46,15 @@ Completion/search stack and installed plugins:
 
 ### `xq-org` (`lisp/xq-org.el`)
 
-Daily-note setup with built-in `org`, `org-modern`, and `org-appear`:
+Daily-note setup with built-in `org`, `org-modern`, `org-appear`, and `org-roam`:
 - stores Org files in `~/notes`
-- creates daily notes in `~/notes/daily/YYYY-MM-DD.org`
-- provides `xq/org-open-today-note` to open today's note
+- stores roam notes in `~/notes/roam`
+- uses `org-roam-dailies` (`daily/`) for date-based daily notes
 - sets basic capture templates for todos and quick notes
 - enables `org-modern` for cleaner Org visuals
 - enables `org-appear` in manual mode, integrated with Evil insert state
+- enables `org-roam-db-autosync-mode`
+- enables completion integration via `org-roam-completion-everywhere`
 
 ### `xq-keybinds` (`lisp/xq-keybinds.el`)
 
@@ -81,10 +83,30 @@ Current leader key mappings:
 - `SPC p f`: `project-find-file`
 - `SPC p d`: `project-find-dir`
 - `SPC n` group: notes commands
-- `SPC n n`: `xq/org-open-today-note`
-- `SPC n i`: `xq/org-open-inbox`
+- `SPC n n`: `org-roam-dailies-goto-today`
 - `SPC n a`: `org-agenda`
-- `SPC n c`: `org-capture`
+- `SPC n r` group: org-roam commands
+- `SPC n r f`: `org-roam-node-find`
+- `SPC n r i`: `org-roam-node-insert`
+- `SPC n r c`: `org-roam-capture`
+- `SPC n r t`: `org-roam-dailies-capture-today` (daily TODO)
+- `SPC n r b`: `org-roam-buffer-toggle`
+
+## Org Workflow
+
+Daily notes (`org-roam-dailies`):
+- Open today: `SPC n n` (`org-roam-dailies-goto-today`)
+- Capture TODO to today: `SPC n r t` (`org-roam-dailies-capture-today`)
+- Open a past/future date: `M-x org-roam-dailies-goto-date`
+- Quick jumps:
+  - `M-x org-roam-dailies-goto-yesterday`
+  - `M-x org-roam-dailies-goto-tomorrow`
+
+Roam knowledge notes:
+- Find/create node: `SPC n r f`
+- Insert node link: `SPC n r i`
+- Capture node: `SPC n r c`
+- Toggle backlinks buffer: `SPC n r b`
 
 ## Startup Flow
 
