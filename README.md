@@ -10,13 +10,18 @@ Personal Emacs config built around `straight.el`, `use-package`, and modular `li
 
 ## Modules
 
-### `xq-ui` (`lisp/xq-ui.el`)
+### `xq-defaults` (`lisp/xq-defaults.el`)
 
-UI and startup defaults:
-- disable menu/tool/scroll bars
-- enable line and column indicators
-- enable global line numbers
-- start with maximized frame
+General defaults for most users:
+- UI and startup defaults:
+  - disable menu/tool/scroll bars
+  - enable line and column indicators
+  - enable global line numbers
+  - start with maximized frame
+- on macOS GUI Emacs, initialize `exec-path-from-shell` when available
+- stores backup files (`filename~`) under `~/.config/emacs/backups/`
+- stores auto-save files under `~/.config/emacs/auto-saves/`
+- keeps project working trees clean of editor-generated files
 
 ### `xq-theme` (`lisp/xq-theme.el`)
 
@@ -44,13 +49,22 @@ Completion/search stack and installed plugins:
 - `marginalia`: adds rich annotations to minibuffer candidates.
 - `consult`: command/search/navigation interface used by leader bindings.
 
+### `xq-lang` (`lisp/xq-lang.el`)
+
+Language/LSP entrypoint:
+- configures `eglot` defaults
+- sets language server mapping for Python
+- lazy-loads language-specific modules only when matching major modes start
+
+Language-specific modules:
+- `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`
+
 ### `xq-org` (`lisp/xq-org.el`)
 
 Daily-note setup with built-in `org`, `org-modern`, `org-appear`, and `org-roam`:
 - stores Org files in `~/notes`
 - stores roam notes in `~/notes/roam`
 - uses `org-roam-dailies` (`daily/`) for date-based daily notes
-- sets basic capture templates for todos and quick notes
 - enables `org-modern` for cleaner Org visuals
 - enables `org-appear` in manual mode, integrated with Evil insert state
 - enables `org-roam-db-autosync-mode`
@@ -123,13 +137,18 @@ Roam knowledge notes:
 - Capture node: `SPC n r c`
 - Toggle backlinks buffer: `SPC n r b`
 
+Org editing tips:
+- Insert source block quickly: type `<s` then press `TAB` (enabled by `org-tempo`).
+- Alternative: `C-c C-, s`.
+
 ## Startup Flow
 
 `init.el` loads modules in this order:
-1. `xq-ui`
+1. `xq-defaults`
 2. `xq-theme`
 3. `xq-which-key`
 4. `xq-evil`
 5. `xq-completion`
-6. `xq-org`
-7. `xq-keybinds`
+6. `xq-lang`
+7. `xq-org`
+8. `xq-keybinds`

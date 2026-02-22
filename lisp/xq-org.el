@@ -11,6 +11,7 @@
         org-hide-emphasis-markers t
         org-log-done 'time)
   :config
+  (require 'org-tempo)
   (unless (file-directory-p xq/org-directory)
     (make-directory xq/org-directory t)))
 

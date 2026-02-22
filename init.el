@@ -4,6 +4,7 @@
 (setq package-enable-at-startup nil)
 ;; Prefer newer .el files over stale compiled .elc files.
 (setq load-prefer-newer t)
+
 ;; Avoid noisy native-comp warnings from third-party packages like general.el.
 (when (boundp 'native-comp-async-report-warnings-errors)
   (setq native-comp-async-report-warnings-errors nil))
@@ -44,11 +45,12 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Load feature modules.
-(require 'xq-ui)
+(require 'xq-defaults)
 (require 'xq-theme)
 (require 'xq-which-key)
 (require 'xq-evil)
 (require 'xq-completion)
+(require 'xq-lang)
 (require 'xq-org)
 (require 'xq-keybinds)
 
