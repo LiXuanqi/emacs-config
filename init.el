@@ -34,52 +34,12 @@
 (when (file-exists-p custom-file)
   (load custom-file nil 'nomessage))
 
-(use-package emacs
-  :init
-  (setq inhibit-startup-screen t
-        ring-bell-function 'ignore
-        initial-frame-alist '((fullscreen . maximized)))
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (line-number-mode 1)
-  (column-number-mode 1)
-  (global-display-line-numbers-mode 1))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(use-package which-key
-  :config
-  (which-key-mode 1))
-
-(use-package evil
-  :init
-  (setq evil-want-integration t
-        evil-want-keybinding nil
-        evil-vsplit-window-right t
-        evil-split-window-below t
-        evil-undo-system 'undo-redo)
-  :config
-  (evil-mode 1))
-
-(use-package general
-  :after evil
-  :config
-  (general-auto-unbind-keys)
-  (general-create-definer lq/leader-def
-    :states '(normal visual motion)
-    :keymaps 'override
-    :prefix "SPC")
-  (lq/leader-def
-    "w"  '(:ignore t :which-key "window")
-    "w|" '(split-window-right :which-key "split right")
-    "w-" '(split-window-below :which-key "split below")
-    "wh" '(windmove-left :which-key "focus left")
-    "wj" '(windmove-down :which-key "focus down")
-    "wk" '(windmove-up :which-key "focus up")
-    "wl" '(windmove-right :which-key "focus right")))
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+;; Load feature modules.
+(require 'xq-ui)
+(require 'xq-which-key)
+(require 'xq-evil)
+(require 'xq-keybinds)
 
 ;;; init.el ends here

@@ -2,13 +2,14 @@
 
 ## Project Structure & Module Organization
 This repo is an Emacs config using `straight.el` for package management.
-- `init.el`: bootstrap `straight.el`, load core settings, and declare packages.
+- `init.el`: bootstrap `straight.el` and load local modules; keep it thin.
 - `early-init.el` (optional): startup/UI defaults that must run before package init.
 - `lisp/`: local modules grouped by concern (for example, `lisp/ui.el`, `lisp/lang-python.el`).
 - `tests/`: `ert` tests (`*-test.el` naming).
 - `straight/`: package checkouts and build metadata (generated).
 
 Keep generated caches and machine-local artifacts out of version control.
+Put plugin configuration in `lisp/` modules and keep keybindings in a dedicated module (for example, `lisp/xq-keybinds.el`).
 
 ## Build, Test, and Development Commands
 Use batch Emacs commands for reproducible checks:
@@ -24,7 +25,7 @@ If you add a `Makefile`, keep targets thin wrappers around these commands.
 Follow standard Emacs Lisp conventions:
 - Indentation: 2 spaces, no tabs.
 - File names: lower-case with dashes (for example, `editing-tools.el`).
-- Symbols: prefix project-specific functions/variables (for example, `lq/enable-ui`).
+- Symbols: prefix project-specific functions/variables with `xq` (for example, `xq/enable-ui`).
 - Module design: one responsibility per file; expose a clear `provide` feature.
 - Keybindings for new plugins should prefer Evil-style leader mappings (for example, `SPC s w`).
 
@@ -33,7 +34,7 @@ Run `checkdoc` and byte-compilation warnings before opening a PR.
 ## Testing Guidelines
 Use `ert` for behavior tests on custom Lisp modules.
 - Place tests under `tests/` and name files `*-test.el`.
-- Name tests with scenario-focused names (for example, `lq/ui-mode-line-hides-in-terminal`).
+- Name tests with scenario-focused names (for example, `xq/ui-mode-line-hides-in-terminal`).
 - Cover startup-critical paths: package bootstrap, keybindings, and module loading.
 
 ## Commit & Pull Request Guidelines
