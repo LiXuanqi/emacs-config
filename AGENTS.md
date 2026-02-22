@@ -10,6 +10,9 @@ This repo is an Emacs config using `straight.el` for package management.
 
 Keep generated caches and machine-local artifacts out of version control.
 Put plugin configuration in `lisp/` modules and keep keybindings in a dedicated module (for example, `lisp/xq-keybinds.el`).
+For new plugins, prefer creating/updating a focused module (for example, `lisp/xq-completion.el`) instead of growing `init.el`.
+When adding a new module, load it from `init.el` via `(require 'xq-<module>)` and keep module load order explicit.
+When adding or changing modules, update `README.md` Module docs in the same change.
 
 ## Build, Test, and Development Commands
 Use batch Emacs commands for reproducible checks:
@@ -25,9 +28,11 @@ If you add a `Makefile`, keep targets thin wrappers around these commands.
 Follow standard Emacs Lisp conventions:
 - Indentation: 2 spaces, no tabs.
 - File names: lower-case with dashes (for example, `editing-tools.el`).
+- Module files should use the `xq-<topic>.el` naming pattern.
 - Symbols: prefix project-specific functions/variables with `xq` (for example, `xq/enable-ui`).
 - Module design: one responsibility per file; expose a clear `provide` feature.
 - Keybindings for new plugins should prefer Evil-style leader mappings (for example, `SPC s w`).
+- New plugin keybindings should be defined in `lisp/xq-keybinds.el`, not inside plugin modules.
 
 Run `checkdoc` and byte-compilation warnings before opening a PR.
 

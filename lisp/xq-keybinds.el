@@ -15,7 +15,13 @@
     "wh" '(windmove-left :which-key "focus left")
     "wj" '(windmove-down :which-key "focus down")
     "wk" '(windmove-up :which-key "focus up")
-    "wl" '(windmove-right :which-key "focus right")))
+    "wl" '(windmove-right :which-key "focus right")
+    "s"  '(:ignore t :which-key "search")
+    "ss" '(consult-line :which-key "line")
+    "sg" '(consult-ripgrep :which-key "ripgrep")
+    "sb" '(consult-buffer :which-key "buffer")
+    "sf" '(consult-find :which-key "find file")
+    "si" '(consult-imenu :which-key "imenu")))
 
 (provide 'xq-keybinds)
 ;;; xq-keybinds.el ends here

@@ -40,6 +40,7 @@
 (require 'xq-ui)
 (require 'xq-which-key)
 (require 'xq-evil)
+(require 'xq-completion)
 (require 'xq-keybinds)
 
 ;;; init.el ends here
