@@ -26,6 +26,7 @@ Follow standard Emacs Lisp conventions:
 - File names: lower-case with dashes (for example, `editing-tools.el`).
 - Symbols: prefix project-specific functions/variables (for example, `lq/enable-ui`).
 - Module design: one responsibility per file; expose a clear `provide` feature.
+- Keybindings for new plugins should prefer Evil-style leader mappings (for example, `SPC s w`).
 
 Run `checkdoc` and byte-compilation warnings before opening a PR.
 

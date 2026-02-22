@@ -2,6 +2,8 @@
 
 ;; Keep package.el from activating packages before straight.el bootstraps.
 (setq package-enable-at-startup nil)
+;; Prefer newer .el files over stale compiled .elc files.
+(setq load-prefer-newer t)
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -40,5 +42,20 @@
 (use-package which-key
   :config
   (which-key-mode 1))
+
+(use-package evil
+  :init
+  (setq evil-want-integration t
+        evil-want-keybinding nil
+        evil-vsplit-window-right t
+        evil-split-window-below t
+        evil-undo-system 'undo-redo)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 ;;; init.el ends here
