@@ -24,7 +24,10 @@
          'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+(load bootstrap-file nil 'nomessage))
+
+;; Force built-in Org to avoid mixed-version loading with external Org packages.
+(straight-use-package '(org :type built-in))
 
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
@@ -41,6 +44,7 @@
 (require 'xq-which-key)
 (require 'xq-evil)
 (require 'xq-completion)
+(require 'xq-org)
 (require 'xq-keybinds)
 
 ;;; init.el ends here

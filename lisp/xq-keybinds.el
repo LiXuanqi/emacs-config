@@ -25,7 +25,12 @@
     "p"  '(:ignore t :which-key "project")
     "pp" '(project-switch-project :which-key "switch project")
     "pf" '(project-find-file :which-key "find file")
-    "pd" '(project-find-dir :which-key "find dir")))
+    "pd" '(project-find-dir :which-key "find dir")
+    "n"  '(:ignore t :which-key "notes")
+    "nn" '(xq/org-open-today-note :which-key "today note")
+    "ni" '(xq/org-open-inbox :which-key "inbox")
+    "na" '(org-agenda :which-key "agenda")
+    "nc" '(org-capture :which-key "capture")))
 
 (provide 'xq-keybinds)
 ;;; xq-keybinds.el ends here

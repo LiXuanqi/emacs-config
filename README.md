@@ -38,6 +38,16 @@ Completion/search stack and installed plugins:
 - `marginalia`: adds rich annotations to minibuffer candidates.
 - `consult`: command/search/navigation interface used by leader bindings.
 
+### `xq-org` (`lisp/xq-org.el`)
+
+Daily-note setup with built-in `org`, `org-modern`, and `org-appear`:
+- stores Org files in `~/notes`
+- creates daily notes in `~/notes/daily/YYYY-MM-DD.org`
+- provides `xq/org-open-today-note` to open today's note
+- sets basic capture templates for todos and quick notes
+- enables `org-modern` for cleaner Org visuals
+- enables `org-appear` in manual mode, integrated with Evil insert state
+
 ### `xq-keybinds` (`lisp/xq-keybinds.el`)
 
 Special module for leader key definitions.
@@ -64,6 +74,11 @@ Current leader key mappings:
 - `SPC p p`: `project-switch-project`
 - `SPC p f`: `project-find-file`
 - `SPC p d`: `project-find-dir`
+- `SPC n` group: notes commands
+- `SPC n n`: `xq/org-open-today-note`
+- `SPC n i`: `xq/org-open-inbox`
+- `SPC n a`: `org-agenda`
+- `SPC n c`: `org-capture`
 
 ## Startup Flow
 
@@ -72,4 +87,5 @@ Current leader key mappings:
 2. `xq-which-key`
 3. `xq-evil`
 4. `xq-completion`
-5. `xq-keybinds`
+5. `xq-org`
+6. `xq-keybinds`
