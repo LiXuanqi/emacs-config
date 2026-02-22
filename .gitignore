@@ -6,5 +6,6 @@ auto-save-list/
 .org-id-locations
 org-roam.db
 bookmarks.eld
+bookmarks.eld~
 history
 projects.eld
