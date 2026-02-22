@@ -18,6 +18,12 @@ UI and startup defaults:
 - enable global line numbers
 - start with maximized frame
 
+### `xq-theme` (`lisp/xq-theme.el`)
+
+Theme configuration:
+- installs `doom-themes`
+- sets `doom-one` as the active theme
+
 ### `xq-which-key` (`lisp/xq-which-key.el`)
 
 Enables `which-key` to show available keybindings after prefix keys.
@@ -84,8 +90,9 @@ Current leader key mappings:
 
 `init.el` loads modules in this order:
 1. `xq-ui`
-2. `xq-which-key`
-3. `xq-evil`
-4. `xq-completion`
-5. `xq-org`
-6. `xq-keybinds`
+2. `xq-theme`
+3. `xq-which-key`
+4. `xq-evil`
+5. `xq-completion`
+6. `xq-org`
+7. `xq-keybinds`

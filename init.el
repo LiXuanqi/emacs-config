@@ -41,6 +41,7 @@
 
 ;; Load feature modules.
 (require 'xq-ui)
+(require 'xq-theme)
 (require 'xq-which-key)
 (require 'xq-evil)
 (require 'xq-completion)
