@@ -50,6 +50,7 @@
 (require 'xq-which-key)
 (require 'xq-evil)
 (require 'xq-completion)
+(require 'xq-treesit)
 (require 'xq-lang)
 (require 'xq-org)
 (require 'xq-keybinds)

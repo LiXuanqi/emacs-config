@@ -49,6 +49,18 @@ Completion/search stack and installed plugins:
 - `marginalia`: adds rich annotations to minibuffer candidates.
 - `consult`: command/search/navigation interface used by leader bindings.
 
+### `xq-treesit` (`lisp/xq-treesit.el`)
+
+Tree-sitter integration:
+- sets common grammar sources for `M-x treesit-install-language-grammar`
+- prefers `*-ts-mode` for supported languages when tree-sitter is available
+- falls back to classic modes automatically when tree-sitter is unavailable
+
+Tree-sitter setup on a new machine (after cloning this repo):
+1. Run `M-x treesit-install-language-grammar`.
+2. Enter grammar name (repeat for each language you want): `python`, `bash`, `json`, `yaml`, `toml`, `css`, `javascript`, `typescript`, `tsx`, `go`.
+3. Restart Emacs after installation.
+
 ### `xq-lang` (`lisp/xq-lang.el`)
 
 Language/LSP entrypoint:
@@ -149,6 +161,7 @@ Org editing tips:
 3. `xq-which-key`
 4. `xq-evil`
 5. `xq-completion`
-6. `xq-lang`
-7. `xq-org`
-8. `xq-keybinds`
+6. `xq-treesit`
+7. `xq-lang`
+8. `xq-org`
+9. `xq-keybinds`
