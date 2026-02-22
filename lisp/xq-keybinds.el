@@ -21,7 +21,11 @@
     "sg" '(consult-ripgrep :which-key "ripgrep")
     "sb" '(consult-buffer :which-key "buffer")
     "sf" '(consult-find :which-key "find file")
-    "si" '(consult-imenu :which-key "imenu")))
+    "si" '(consult-imenu :which-key "imenu")
+    "p"  '(:ignore t :which-key "project")
+    "pp" '(project-switch-project :which-key "switch project")
+    "pf" '(project-find-file :which-key "find file")
+    "pd" '(project-find-dir :which-key "find dir")))
 
 (provide 'xq-keybinds)
 ;;; xq-keybinds.el ends here

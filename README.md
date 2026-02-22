@@ -60,6 +60,10 @@ Current leader key mappings:
 - `SPC s b`: `consult-buffer`
 - `SPC s f`: `consult-find`
 - `SPC s i`: `consult-imenu`
+- `SPC p` group: project commands
+- `SPC p p`: `project-switch-project`
+- `SPC p f`: `project-find-file`
+- `SPC p d`: `project-find-dir`
 
 ## Startup Flow
 
