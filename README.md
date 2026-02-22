@@ -94,6 +94,21 @@ Current leader key mappings:
 
 ## Org Workflow
 
+Notes folder layout:
+
+```text
+~/notes/
+├── daily/
+│   └── YYYY-MM-DD.org
+└── roam/
+    └── *.org
+```
+
+- `~/notes/`: base Org directory (`org-directory`).
+- `~/notes/roam/`: org-roam knowledge notes (`org-roam-directory`).
+- `~/notes/daily/`: org-roam daily files (`org-roam-dailies-directory`).
+- `~/notes/daily/YYYY-MM-DD.org`: one daily note per date.
+
 Daily notes (`org-roam-dailies`):
 - Open today: `SPC n n` (`org-roam-dailies-goto-today`)
 - Capture TODO to today: `SPC n r t` (`org-roam-dailies-capture-today`)

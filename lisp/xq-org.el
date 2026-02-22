@@ -49,7 +49,7 @@
                               "#+title: %<%Y-%m-%d>\n\n"))))
   :custom
   (org-roam-directory (file-truename (expand-file-name "roam" xq/org-directory)))
-  (org-roam-dailies-directory "daily/")
+  (org-roam-dailies-directory (file-truename (expand-file-name "daily" xq/org-directory)))
   :config
   (unless (file-directory-p org-roam-directory)
     (make-directory org-roam-directory t))
