@@ -8,6 +8,20 @@ Personal Emacs config built around `straight.el`, `use-package`, and modular `li
 - `lisp/`: feature modules (`xq-*.el`).
 - `AGENTS.md`: repository conventions for future changes.
 
+## System Dependencies
+
+Some Emacs packages in this config require external tools installed on your system.
+
+- `lisp/xq-terminal.el` (`vterm`):
+  - `cmake`
+  - `libtool` (provides `glibtool` on macOS)
+- `lisp/xq-lang.el` (`eglot` Python server):
+  - `pyright-langserver` (usually via `npm install -g pyright`)
+- `lisp/xq-keybinds.el` search command (`consult-ripgrep` bound to `SPC s g`):
+  - `ripgrep` (`rg`)
+- `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
+  - compiler toolchain for grammar builds (`cc`/Xcode Command Line Tools on macOS)
+
 ## Modules
 
 ### `xq-defaults` (`lisp/xq-defaults.el`)
@@ -67,6 +81,13 @@ Language/LSP entrypoint:
 Language-specific modules:
 - `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`
 
+### `xq-terminal` (`lisp/xq-terminal.el`)
+
+Terminal workflow improvements:
+- project-root `vterm` command
+- `vterm` as default terminal workflow
+- increased terminal scrollback for longer sessions
+
 ### `xq-org` (`lisp/xq-org.el`)
 
 Daily-note setup with built-in `org`, `org-modern`, `org-appear`, and `org-roam`:
@@ -104,6 +125,8 @@ Current leader key mappings:
 - `SPC p p`: `project-switch-project`
 - `SPC p f`: `project-find-file`
 - `SPC p d`: `project-find-dir`
+- `SPC t` group: terminal commands
+- `SPC t t`: `xq/terminal-vterm-here`
 - `SPC n` group: notes commands
 - `SPC n n`: `org-roam-dailies-goto-today`
 - `SPC n a`: `org-agenda`
@@ -159,5 +182,6 @@ Org editing tips:
 5. `xq-completion`
 6. `xq-treesit`
 7. `xq-lang`
-8. `xq-org`
-9. `xq-keybinds`
+8. `xq-terminal`
+9. `xq-org`
+10. `xq-keybinds`

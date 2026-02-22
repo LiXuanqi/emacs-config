@@ -26,6 +26,8 @@
     "pp" '(project-switch-project :which-key "switch project")
     "pf" '(project-find-file :which-key "find file")
     "pd" '(project-find-dir :which-key "find dir")
+    "t"  '(:ignore t :which-key "terminal")
+    "tt" '(xq/terminal-vterm-here :which-key "vterm (project)")
     "n"  '(:ignore t :which-key "notes")
     "nn" '(org-roam-dailies-goto-today :which-key "today daily")
     "na" '(org-agenda :which-key "agenda")
