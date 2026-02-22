@@ -4,6 +4,13 @@
 (setq package-enable-at-startup nil)
 ;; Prefer newer .el files over stale compiled .elc files.
 (setq load-prefer-newer t)
+;; Avoid noisy native-comp warnings from third-party packages like general.el.
+(when (boundp 'native-comp-async-report-warnings-errors)
+  (setq native-comp-async-report-warnings-errors nil))
+(when (boundp 'native-comp-jit-compilation-deny-list)
+  (add-to-list 'native-comp-jit-compilation-deny-list "general\\.el\\'"))
+(when (boundp 'native-comp-deferred-compilation-deny-list)
+  (add-to-list 'native-comp-deferred-compilation-deny-list "general\\.el\\'"))
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -51,17 +58,24 @@
         evil-split-window-below t
         evil-undo-system 'undo-redo)
   :config
-  (evil-mode 1)
-  (define-prefix-command 'lq/leader-map)
-  (define-prefix-command 'lq/window-map)
-  (define-key lq/leader-map (kbd "w") #'lq/window-map)
-  (define-key lq/window-map (kbd "|") #'split-window-right)
-  (define-key lq/window-map (kbd "-") #'split-window-below)
-  (define-key lq/window-map (kbd "h") #'windmove-left)
-  (define-key lq/window-map (kbd "j") #'windmove-down)
-  (define-key lq/window-map (kbd "k") #'windmove-up)
-  (define-key lq/window-map (kbd "l") #'windmove-right)
-  (evil-define-key '(normal visual motion) 'global (kbd "SPC") lq/leader-map))
+  (evil-mode 1))
+
+(use-package general
+  :after evil
+  :config
+  (general-auto-unbind-keys)
+  (general-create-definer lq/leader-def
+    :states '(normal visual motion)
+    :keymaps 'override
+    :prefix "SPC")
+  (lq/leader-def
+    "w"  '(:ignore t :which-key "window")
+    "w|" '(split-window-right :which-key "split right")
+    "w-" '(split-window-below :which-key "split below")
+    "wh" '(windmove-left :which-key "focus left")
+    "wj" '(windmove-down :which-key "focus down")
+    "wk" '(windmove-up :which-key "focus up")
+    "wl" '(windmove-right :which-key "focus right")))
 
 (use-package evil-collection
   :after evil
