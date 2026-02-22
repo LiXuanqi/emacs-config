@@ -13,21 +13,17 @@ Personal Emacs config built around `straight.el`, `use-package`, and modular `li
 ### `xq-defaults` (`lisp/xq-defaults.el`)
 
 General defaults for most users:
-- UI and startup defaults:
-  - disable menu/tool/scroll bars
-  - enable line and column indicators
-  - enable global line numbers
-  - start with maximized frame
 - on macOS GUI Emacs, initialize `exec-path-from-shell` when available
 - stores backup files (`filename~`) under `~/.config/emacs/backups/`
 - stores auto-save files under `~/.config/emacs/auto-saves/`
 - keeps project working trees clean of editor-generated files
 
-### `xq-theme` (`lisp/xq-theme.el`)
+### `xq-ui` (`lisp/xq-ui.el`)
 
-Theme configuration:
-- installs `doom-themes`
-- sets `doom-one` as the active theme
+UI configuration:
+- startup/UI defaults: disable menu/tool/scroll bars, enable line/column indicators, enable global line numbers, start maximized
+- theme via `doom-themes` (`doom-one`)
+- mode line via `doom-modeline` with compact defaults
 
 ### `xq-which-key` (`lisp/xq-which-key.el`)
 
@@ -157,7 +153,7 @@ Org editing tips:
 
 `init.el` loads modules in this order:
 1. `xq-defaults`
-2. `xq-theme`
+2. `xq-ui`
 3. `xq-which-key`
 4. `xq-evil`
 5. `xq-completion`

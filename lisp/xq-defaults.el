@@ -1,17 +1,5 @@
 ;;; xq-defaults.el --- Sane defaults for general usage -*- lexical-binding: t; -*-
 
-(use-package emacs
-  :init
-  (setq inhibit-startup-screen t
-        ring-bell-function 'ignore
-        initial-frame-alist '((fullscreen . maximized)))
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (line-number-mode 1)
-  (column-number-mode 1)
-  (global-display-line-numbers-mode 1))
-
 ;; On macOS GUI Emacs, import shell PATH so external tools (e.g. LSP servers) resolve.
 (when (memq window-system '(mac ns))
   (ignore-errors
