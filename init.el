@@ -51,7 +51,17 @@
         evil-split-window-below t
         evil-undo-system 'undo-redo)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (define-prefix-command 'lq/leader-map)
+  (define-prefix-command 'lq/window-map)
+  (define-key lq/leader-map (kbd "w") #'lq/window-map)
+  (define-key lq/window-map (kbd "|") #'split-window-right)
+  (define-key lq/window-map (kbd "-") #'split-window-below)
+  (define-key lq/window-map (kbd "h") #'windmove-left)
+  (define-key lq/window-map (kbd "j") #'windmove-down)
+  (define-key lq/window-map (kbd "k") #'windmove-up)
+  (define-key lq/window-map (kbd "l") #'windmove-right)
+  (evil-define-key '(normal visual motion) 'global (kbd "SPC") lq/leader-map))
 
 (use-package evil-collection
   :after evil
