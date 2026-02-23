@@ -81,6 +81,13 @@ Language/LSP entrypoint:
 Language-specific modules:
 - `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`
 
+### `xq-git` (`lisp/xq-git.el`)
+
+Git workflow setup:
+- enables `magit` commands
+- opens status in a practical single-window layout
+- sets commit summary max length to 72 characters
+
 ### `xq-terminal` (`lisp/xq-terminal.el`)
 
 Terminal workflow improvements:
@@ -125,6 +132,10 @@ Current leader key mappings:
 - `SPC p p`: `project-switch-project`
 - `SPC p f`: `project-find-file`
 - `SPC p d`: `project-find-dir`
+- `SPC g` group: git commands
+- `SPC g g`: `magit-status`
+- `SPC g l`: `magit-log-current`
+- `SPC g b`: `magit-blame-addition`
 - `SPC t` group: terminal commands
 - `SPC t t`: `xq/terminal-vterm-here`
 - `SPC n` group: notes commands
@@ -172,6 +183,21 @@ Org editing tips:
 - Insert source block quickly: type `<s` then press `TAB` (enabled by `org-tempo`).
 - Alternative: `C-c C-, s`.
 
+## Magit Workflow
+
+Basic day-to-day flow:
+1. Open status: `SPC g g`.
+2. Review changes in status buffer sections (`unstaged`, `staged`, `untracked`).
+3. Stage files/hunks with `s` (unstage with `u`).
+4. Open diff at point with `TAB` or `RET`.
+5. Commit with `c c`, write message, then `C-c C-c`.
+6. Push with `P p`.
+7. Pull/rebase updates with `F u`.
+
+Useful extras:
+- View current-file history: `SPC g l`.
+- Blame current file/line context: `SPC g b` (toggle off with `q` in blame view).
+
 ## Startup Flow
 
 `init.el` loads modules in this order:
@@ -182,6 +208,7 @@ Org editing tips:
 5. `xq-completion`
 6. `xq-treesit`
 7. `xq-lang`
-8. `xq-terminal`
-9. `xq-org`
-10. `xq-keybinds`
+8. `xq-git`
+9. `xq-terminal`
+10. `xq-org`
+11. `xq-keybinds`

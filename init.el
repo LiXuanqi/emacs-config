@@ -52,6 +52,7 @@
 (require 'xq-completion)
 (require 'xq-treesit)
 (require 'xq-lang)
+(require 'xq-git)
 (require 'xq-terminal)
 (require 'xq-org)
 (require 'xq-keybinds)
