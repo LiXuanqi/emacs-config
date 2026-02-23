@@ -17,6 +17,8 @@ Some Emacs packages in this config require external tools installed on your syst
   - `libtool` (provides `glibtool` on macOS)
 - `lisp/xq-lang.el` (`eglot` Python server):
   - `pyright-langserver` (usually via `npm install -g pyright`)
+- `lisp/xq-lang.el` (`eglot` Rust server):
+  - `rust-analyzer`
 - `lisp/xq-keybinds.el` search command (`consult-ripgrep` bound to `SPC s g`):
   - `ripgrep` (`rg`)
 - `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
@@ -68,18 +70,19 @@ Tree-sitter integration:
 
 Tree-sitter setup on a new machine (after cloning this repo):
 1. Run `M-x treesit-install-language-grammar`.
-2. Enter grammar name (repeat for each language you want): `python`, `bash`, `json`, `yaml`, `toml`, `css`, `javascript`, `typescript`, `tsx`, `go`.
+2. Enter grammar name (repeat for each language you want): `python`, `bash`, `json`, `yaml`, `toml`, `css`, `javascript`, `typescript`, `tsx`, `go`, `rust`.
 3. Restart Emacs after installation.
 
 ### `xq-lang` (`lisp/xq-lang.el`)
 
 Language/LSP entrypoint:
 - configures `eglot` defaults
-- sets language server mapping for Python
+- sets language server mappings for Python and Rust
 - lazy-loads language-specific modules only when matching major modes start
 
 Language-specific modules:
 - `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`
+- `lisp/xq-lang-rust.el`: Rust defaults + `eglot-ensure`
 
 ### `xq-git` (`lisp/xq-git.el`)
 

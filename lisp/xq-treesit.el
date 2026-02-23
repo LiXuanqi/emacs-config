@@ -12,7 +12,8 @@
           (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
           (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-          (go "https://github.com/tree-sitter/tree-sitter-go")))
+          (go "https://github.com/tree-sitter/tree-sitter-go")
+          (rust "https://github.com/tree-sitter/tree-sitter-rust")))
 
   ;; Prefer tree-sitter major modes when available.
   (setq major-mode-remap-alist
@@ -21,7 +22,8 @@
                   (js-mode . js-ts-mode)
                   (javascript-mode . js-ts-mode)
                   (json-mode . json-ts-mode)
-                  (typescript-mode . typescript-ts-mode))
+                  (typescript-mode . typescript-ts-mode)
+                  (rust-mode . rust-ts-mode))
                 major-mode-remap-alist)))
 
 (provide 'xq-treesit)
