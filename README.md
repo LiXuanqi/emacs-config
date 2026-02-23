@@ -186,6 +186,12 @@ Org editing tips:
 - Insert source block quickly: type `<s` then press `TAB` (enabled by `org-tempo`).
 - Alternative: `C-c C-, s`.
 
+## Future Ideas
+
+- Add `avy` for fast jump-to-char/word/line motions (for example, leader map under `SPC j`).
+- Add `evil-snipe` for enhanced Vim-style quick character motions.
+- Add machine-local override loading (`local.el`) for per-laptop custom settings.
+
 ## Magit Workflow
 
 Basic day-to-day flow:
