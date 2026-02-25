@@ -77,6 +77,16 @@ Tree-sitter setup on a new machine (after cloning this repo):
 
 Language/LSP entrypoint:
 - configures `eglot` defaults
+- adds `xq/eglot-server-memory-mb` to tune memory for Node-based language servers
+
+Example tuning in your config:
+```elisp
+;; Increase Node.js LSP heap (e.g., Pyright) to 4 GB.
+(setq xq/eglot-server-memory-mb 4096)
+
+;; Or disable explicit memory tuning and use server defaults.
+;; (setq xq/eglot-server-memory-mb nil)
+```
 - sets language server mappings for Python and Rust
 - lazy-loads language-specific modules only when matching major modes start
 
