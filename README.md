@@ -77,25 +77,13 @@ Tree-sitter setup on a new machine (after cloning this repo):
 
 Language/LSP entrypoint:
 - configures `eglot` defaults
-- adds `pyproject.toml` as a `project.el` VC project root marker
-- adds `xq/eglot-server-memory-mb` to tune memory for Node-based language servers
-- configures Pyright via `eglot-workspace-configuration` to:
-  - use `openFilesOnly` diagnostics
-  - exclude common heavy directories (`.venv`, `node_modules`, `dist`, `build`, etc.)
-
-Example tuning in your config:
-```elisp
-;; Increase Node.js LSP heap (e.g., Pyright) to 4 GB.
-(setq xq/eglot-server-memory-mb 4096)
-
-;; Or disable explicit memory tuning and use server defaults.
-;; (setq xq/eglot-server-memory-mb nil)
-```
-- sets language server mappings for Python and Rust
+- sets `eglot-max-file-watches` to `8000` for all language servers
+- disables low-level `jsonrpc` event logging (`jsonrpc--log-event`)
+- sets language server mappings for Rust
 - lazy-loads language-specific modules only when matching major modes start
 
 Language-specific modules:
-- `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`
+- `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`, plus Pyright and Python project-root config
 - `lisp/xq-lang-rust.el`: Rust defaults + `eglot-ensure`
 
 ### `xq-git` (`lisp/xq-git.el`)
