@@ -1,5 +1,10 @@
 ;;; xq-lang.el --- Language and LSP entrypoint -*- lexical-binding: t; -*-
 
+(defcustom xq/disable-jsonrpc-event-logging nil
+  "When non-nil, suppress low-level JSONRPC event logging."
+  :type 'boolean
+  :group 'tools)
+
 (use-package eglot
   :defer t
   :init
@@ -8,9 +13,10 @@
         eglot-max-file-watches 8000))
 
 (with-eval-after-load 'jsonrpc
-  (defun jsonrpc--log-event (&rest _args)
-    "Disable jsonrpc event logging."
-    nil))
+  (when xq/disable-jsonrpc-event-logging
+    (defun jsonrpc--log-event (&rest _args)
+      "Disable jsonrpc event logging."
+      nil)))
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs

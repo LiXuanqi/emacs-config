@@ -78,12 +78,12 @@ Tree-sitter setup on a new machine (after cloning this repo):
 Language/LSP entrypoint:
 - configures `eglot` defaults
 - sets `eglot-max-file-watches` to `8000` for all language servers
-- disables low-level `jsonrpc` event logging (`jsonrpc--log-event`)
+- optionally disables low-level `jsonrpc` event logging (`xq/disable-jsonrpc-event-logging`)
 - sets language server mappings for Rust
 - lazy-loads language-specific modules only when matching major modes start
 
 Language-specific modules:
-- `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`, plus Pyright and Python project-root config
+- `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`, plus Pyright and Python project-root config (optional verbose server logging via `xq/pyright-enable-verbose-logging`)
 - `lisp/xq-lang-rust.el`: Rust defaults + `eglot-ensure`
 
 ### `xq-git` (`lisp/xq-git.el`)

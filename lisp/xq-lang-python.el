@@ -32,6 +32,11 @@ Use \"openFilesOnly\" to reduce file watching pressure in large projects."
   :type '(choice (const "workspace") (const "openFilesOnly"))
   :group 'tools)
 
+(defcustom xq/pyright-enable-verbose-logging nil
+  "When non-nil, start Pyright language server with verbose logging."
+  :type 'boolean
+  :group 'tools)
+
 (defun xq/lang-pyright-command ()
   "Build the Pyright command used by Eglot."
   (append
@@ -40,7 +45,11 @@ Use \"openFilesOnly\" to reduce file watching pressure in large projects."
      (list "env"
            (format "NODE_OPTIONS=--max-old-space-size=%d"
                    xq/eglot-server-memory-mb)))
-   '("pyright-langserver" "--stdio")))
+   (delq nil
+         (list "pyright-langserver"
+               "--stdio"
+               (when xq/pyright-enable-verbose-logging
+                 "--verbose")))))
 
 (defun xq/lang-python-configure-eglot ()
   "Configure Python-specific Eglot behavior."
