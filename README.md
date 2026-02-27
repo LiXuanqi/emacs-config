@@ -79,6 +79,9 @@ Language/LSP entrypoint:
 - configures `eglot` defaults
 - adds `pyproject.toml` as a `project.el` VC project root marker
 - adds `xq/eglot-server-memory-mb` to tune memory for Node-based language servers
+- configures Pyright via `eglot-workspace-configuration` to:
+  - use `openFilesOnly` diagnostics
+  - exclude common heavy directories (`.venv`, `node_modules`, `dist`, `build`, etc.)
 
 Example tuning in your config:
 ```elisp
