@@ -24,6 +24,9 @@ When non-nil, this value is passed through `NODE_OPTIONS` using
   (setq eglot-autoshutdown t
         eglot-send-changes-idle-time 0.5))
 
+(with-eval-after-load 'project
+  (add-to-list 'project-vc-extra-root-markers "pyproject.toml"))
+
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                `((python-mode python-ts-mode) . ,(xq/lang-pyright-command)))

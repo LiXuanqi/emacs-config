@@ -77,6 +77,7 @@ Tree-sitter setup on a new machine (after cloning this repo):
 
 Language/LSP entrypoint:
 - configures `eglot` defaults
+- adds `pyproject.toml` as a `project.el` VC project root marker
 - adds `xq/eglot-server-memory-mb` to tune memory for Node-based language servers
 
 Example tuning in your config:
