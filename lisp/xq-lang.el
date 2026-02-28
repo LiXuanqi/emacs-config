@@ -25,5 +25,10 @@
 (add-hook 'rust-mode-hook #'xq/lang-rust-setup)
 (add-hook 'rust-ts-mode-hook #'xq/lang-rust-setup)
 
+(autoload 'xq/lang-typescript-setup "xq-lang-typescript" nil t)
+(add-hook 'typescript-mode-hook #'xq/lang-typescript-setup)
+(add-hook 'typescript-ts-mode-hook #'xq/lang-typescript-setup)
+(add-hook 'tsx-ts-mode-hook #'xq/lang-typescript-setup)
+
 (provide 'xq-lang)
 ;;; xq-lang.el ends here

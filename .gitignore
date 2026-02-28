@@ -2,6 +2,7 @@
 eln-cache/
 straight/
 auto-save-list/
+auto-saves/
 .saves-*
 .org-id-locations
 org-roam.db
@@ -12,3 +13,5 @@ projects.eld
 tree-sitter/
 backups/
 tramp
+.cache/
+.lsp-session-*
