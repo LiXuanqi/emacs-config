@@ -15,10 +15,8 @@ Some Emacs packages in this config require external tools installed on your syst
 - `lisp/xq-terminal.el` (`vterm`):
   - `cmake`
   - `libtool` (provides `glibtool` on macOS)
-- `lisp/xq-lang.el` (`eglot` Python server):
-  - `pyright-langserver` (usually via `npm install -g pyright`)
-- `lisp/xq-lang.el` (`eglot` Rust server):
-  - `rust-analyzer`
+- `lisp/xq-lang.el` (`lsp-mode` Python server):
+  - `pyright` (usually via `npm install -g pyright`)
 - `lisp/xq-keybinds.el` search command (`consult-ripgrep` bound to `SPC s g`):
   - `ripgrep` (`rg`)
 - `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
@@ -76,15 +74,14 @@ Tree-sitter setup on a new machine (after cloning this repo):
 ### `xq-lang` (`lisp/xq-lang.el`)
 
 Language/LSP entrypoint:
-- configures `eglot` defaults
-- sets `eglot-max-file-watches` to `8000` for all language servers
-- optionally disables low-level `jsonrpc` event logging (`xq/disable-jsonrpc-event-logging`)
-- sets language server mappings for Rust
+- configures `lsp-mode` defaults
+- configures `lsp-pyright` integration
+- sets `lsp-file-watch-threshold` to `10000`
 - lazy-loads language-specific modules only when matching major modes start
 
 Language-specific modules:
-- `lisp/xq-lang-python.el`: Python defaults + `eglot-ensure`, plus Pyright and Python project-root config (optional verbose server logging via `xq/pyright-enable-verbose-logging`)
-- `lisp/xq-lang-rust.el`: Rust defaults + `eglot-ensure`
+- `lisp/xq-lang-python.el`: Python defaults + `lsp-deferred`, plus Pyright and Python project-root config
+- `lisp/xq-lang-rust.el`: Rust defaults
 
 ### `xq-git` (`lisp/xq-git.el`)
 

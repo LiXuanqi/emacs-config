@@ -1,26 +1,16 @@
 ;;; xq-lang.el --- Language and LSP entrypoint -*- lexical-binding: t; -*-
 
-(defcustom xq/disable-jsonrpc-event-logging nil
-  "When non-nil, suppress low-level JSONRPC event logging."
-  :type 'boolean
-  :group 'tools)
-
-(use-package eglot
+(use-package lsp-mode
   :defer t
+  :commands (lsp lsp-deferred)
   :init
-  (setq eglot-autoshutdown t
-        eglot-send-changes-idle-time 0.5
-        eglot-max-file-watches 8000))
+  (setq lsp-keymap-prefix "C-c l"
+        lsp-log-io nil
+        lsp-file-watch-threshold 10000))
 
-(with-eval-after-load 'jsonrpc
-  (when xq/disable-jsonrpc-event-logging
-    (defun jsonrpc--log-event (&rest _args)
-      "Disable jsonrpc event logging."
-      nil)))
-
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '((rust-mode rust-ts-mode) . ("rust-analyzer"))))
+(use-package lsp-pyright
+  :after lsp-mode
+  :defer t)
 
 (use-package rust-mode
   :defer t
