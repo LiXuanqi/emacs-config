@@ -134,6 +134,19 @@ Current leader key mappings:
 - `SPC p p`: `project-switch-project`
 - `SPC p f`: `project-find-file`
 - `SPC p d`: `project-find-dir`
+- `SPC l` group: LSP commands
+- `SPC l l`: `lsp`
+- `SPC l d`: `xref-find-definitions`
+- `SPC l D`: `lsp-find-declaration`
+- `SPC l i`: `lsp-find-implementation`
+- `SPC l t`: `lsp-find-type-definition`
+- `SPC l r`: `xref-find-references`
+- `SPC l R`: `lsp-rename`
+- `SPC l a`: `lsp-execute-code-action`
+- `SPC l f`: `lsp-format-buffer`
+- `SPC l o`: `lsp-organize-imports`
+- `SPC l e`: `flymake-show-buffer-diagnostics`
+- `SPC l s`: `lsp-describe-session`
 - `SPC g` group: git commands
 - `SPC g g`: `magit-status`
 - `SPC g l`: `magit-log-current`
