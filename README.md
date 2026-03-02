@@ -20,6 +20,8 @@ Some Emacs packages in this config require external tools installed on your syst
 - `lisp/xq-lang.el` (`lsp-mode` TypeScript/TSX server):
   - `typescript-language-server`
   - `typescript` (usually via `npm install -g typescript typescript-language-server`)
+- `lisp/xq-lang.el` (`lsp-mode` Go server):
+  - `gopls` (usually via `go install golang.org/x/tools/gopls@latest`)
 - `lisp/xq-keybinds.el` search command (`consult-ripgrep` bound to `SPC s g`):
   - `ripgrep` (`rg`)
 - `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
@@ -84,6 +86,7 @@ Language/LSP entrypoint:
 
 Language-specific modules:
 - `lisp/xq-lang-python.el`: Python defaults + `lsp-deferred`, plus Pyright and Python project-root config
+- `lisp/xq-lang-go.el`: Go defaults + `lsp-deferred`, plus Go project-root config
 - `lisp/xq-lang-rust.el`: Rust defaults
 - `lisp/xq-lang-typescript.el`: TypeScript/TSX defaults + `lsp-deferred`
 

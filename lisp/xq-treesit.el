@@ -23,6 +23,7 @@
                   (javascript-mode . js-ts-mode)
                   (json-mode . json-ts-mode)
                   (typescript-mode . typescript-ts-mode)
+                  (go-mode . go-ts-mode)
                   (rust-mode . rust-ts-mode))
                 major-mode-remap-alist)))
 

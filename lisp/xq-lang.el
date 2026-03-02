@@ -16,10 +16,18 @@
   :defer t
   :mode "\\.rs\\'")
 
+(use-package go-mode
+  :defer t
+  :mode "\\.go\\'")
+
 ;; Lazy-load language-specific setup only when the language mode starts.
 (autoload 'xq/lang-python-setup "xq-lang-python" nil t)
 (add-hook 'python-mode-hook #'xq/lang-python-setup)
 (add-hook 'python-ts-mode-hook #'xq/lang-python-setup)
+
+(autoload 'xq/lang-go-setup "xq-lang-go" nil t)
+(add-hook 'go-mode-hook #'xq/lang-go-setup)
+(add-hook 'go-ts-mode-hook #'xq/lang-go-setup)
 
 (autoload 'xq/lang-rust-setup "xq-lang-rust" nil t)
 (add-hook 'rust-mode-hook #'xq/lang-rust-setup)
