@@ -17,6 +17,8 @@ Some Emacs packages in this config require external tools installed on your syst
   - `libtool` (provides `glibtool` on macOS)
 - `lisp/xq-lang.el` (`lsp-mode` Python server):
   - `pyright` (usually via `npm install -g pyright`)
+- `lisp/xq-format.el` (Python auto-format on save via `apheleia`):
+  - `ruff` (usually via `pipx install ruff` or `pip install ruff`)
 - `lisp/xq-lang.el` (`lsp-mode` TypeScript/TSX server):
   - `typescript-language-server`
   - `typescript` (usually via `npm install -g typescript typescript-language-server`)
@@ -92,6 +94,13 @@ Language-specific modules:
 - `lisp/xq-lang-cpp.el`: C++ defaults + `lsp-deferred`, plus CMake/compile commands project-root config
 - `lisp/xq-lang-rust.el`: Rust defaults
 - `lisp/xq-lang-typescript.el`: TypeScript/TSX defaults + `lsp-deferred`
+
+### `xq-format` (`lisp/xq-format.el`)
+
+Formatting workflow:
+- enables `apheleia` format-on-save for Python buffers (`python-mode`, `python-ts-mode`)
+- uses `ruff format` as the Python formatter
+- logs formatter errors only (`apheleia-log-only-errors`)
 
 ### `xq-git` (`lisp/xq-git.el`)
 
@@ -239,7 +248,8 @@ Useful extras:
 5. `xq-completion`
 6. `xq-treesit`
 7. `xq-lang`
-8. `xq-git`
-9. `xq-terminal`
-10. `xq-org`
-11. `xq-keybinds`
+8. `xq-format`
+9. `xq-git`
+10. `xq-terminal`
+11. `xq-org`
+12. `xq-keybinds`
