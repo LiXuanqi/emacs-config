@@ -4,6 +4,8 @@
   ;; Grammar sources for M-x treesit-install-language-grammar.
   (setq treesit-language-source-alist
         '((python "https://github.com/tree-sitter/tree-sitter-python")
+          (c "https://github.com/tree-sitter/tree-sitter-c")
+          (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
           (bash "https://github.com/tree-sitter/tree-sitter-bash")
           (json "https://github.com/tree-sitter/tree-sitter-json")
           (yaml "https://github.com/ikatyang/tree-sitter-yaml")
@@ -23,6 +25,7 @@
                   (javascript-mode . js-ts-mode)
                   (json-mode . json-ts-mode)
                   (typescript-mode . typescript-ts-mode)
+                  (c++-mode . c++-ts-mode)
                   (go-mode . go-ts-mode)
                   (rust-mode . rust-ts-mode))
                 major-mode-remap-alist)))

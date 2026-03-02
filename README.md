@@ -22,6 +22,8 @@ Some Emacs packages in this config require external tools installed on your syst
   - `typescript` (usually via `npm install -g typescript typescript-language-server`)
 - `lisp/xq-lang.el` (`lsp-mode` Go server):
   - `gopls` (usually via `go install golang.org/x/tools/gopls@latest`)
+- `lisp/xq-lang.el` (`lsp-mode` C++ server):
+  - `clangd` (usually via your package manager, for example Homebrew `llvm` on macOS)
 - `lisp/xq-keybinds.el` search command (`consult-ripgrep` bound to `SPC s g`):
   - `ripgrep` (`rg`)
 - `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
@@ -73,7 +75,7 @@ Tree-sitter integration:
 
 Tree-sitter setup on a new machine (after cloning this repo):
 1. Run `M-x treesit-install-language-grammar`.
-2. Enter grammar name (repeat for each language you want): `python`, `bash`, `json`, `yaml`, `toml`, `css`, `javascript`, `typescript`, `tsx`, `go`, `rust`.
+2. Enter grammar name (repeat for each language you want): `python`, `c`, `cpp`, `bash`, `json`, `yaml`, `toml`, `css`, `javascript`, `typescript`, `tsx`, `go`, `rust`.
 3. Restart Emacs after installation.
 
 ### `xq-lang` (`lisp/xq-lang.el`)
@@ -87,6 +89,7 @@ Language/LSP entrypoint:
 Language-specific modules:
 - `lisp/xq-lang-python.el`: Python defaults + `lsp-deferred`, plus Pyright and Python project-root config
 - `lisp/xq-lang-go.el`: Go defaults + `lsp-deferred`, plus Go project-root config
+- `lisp/xq-lang-cpp.el`: C++ defaults + `lsp-deferred`, plus CMake/compile commands project-root config
 - `lisp/xq-lang-rust.el`: Rust defaults
 - `lisp/xq-lang-typescript.el`: TypeScript/TSX defaults + `lsp-deferred`
 

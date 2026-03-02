@@ -29,6 +29,10 @@
 (add-hook 'go-mode-hook #'xq/lang-go-setup)
 (add-hook 'go-ts-mode-hook #'xq/lang-go-setup)
 
+(autoload 'xq/lang-cpp-setup "xq-lang-cpp" nil t)
+(add-hook 'c++-mode-hook #'xq/lang-cpp-setup)
+(add-hook 'c++-ts-mode-hook #'xq/lang-cpp-setup)
+
 (autoload 'xq/lang-rust-setup "xq-lang-rust" nil t)
 (add-hook 'rust-mode-hook #'xq/lang-rust-setup)
 (add-hook 'rust-ts-mode-hook #'xq/lang-rust-setup)
