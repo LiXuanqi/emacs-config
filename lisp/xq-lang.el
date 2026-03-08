@@ -20,6 +20,9 @@
   :defer t
   :mode "\\.go\\'")
 
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+
 ;; Lazy-load language-specific setup only when the language mode starts.
 (autoload 'xq/lang-python-setup "xq-lang-python" nil t)
 (add-hook 'python-mode-hook #'xq/lang-python-setup)

@@ -86,6 +86,7 @@ Language/LSP entrypoint:
 - configures `lsp-mode` defaults
 - configures `lsp-pyright` integration
 - sets `lsp-file-watch-threshold` to `10000`
+- associates `.ts` and `.tsx` files with built-in TypeScript tree-sitter modes
 - lazy-loads language-specific modules only when matching major modes start
 
 Language-specific modules:
