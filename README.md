@@ -111,6 +111,13 @@ Git workflow setup:
 - opens status in a practical single-window layout
 - sets commit summary max length to 72 characters
 
+### `xq-code-anchor` (`lisp/xq-code-anchor.el`)
+
+Code hosting links from the current buffer location:
+- installs `code-anchor` from GitHub via `straight.el`
+- defaults `code-anchor-open` to GitHub links
+- provides commands to open the current line or active region on GitHub or Sourcegraph
+
 ### `xq-terminal` (`lisp/xq-terminal.el`)
 
 Terminal workflow improvements:
@@ -173,6 +180,10 @@ Current leader key mappings:
 - `SPC g g`: `magit-status`
 - `SPC g l`: `magit-log-current`
 - `SPC g b`: `magit-blame-addition`
+- `SPC g o` group: open current location in remote forge
+- `SPC g o o`: `code-anchor-open`
+- `SPC g o g`: `code-anchor-open-github`
+- `SPC g o s`: `code-anchor-open-sourcegraph`
 - `SPC t` group: terminal commands
 - `SPC t t`: `xq/terminal-vterm-here`
 - in `vterm`, `C-c C-z`: toggle whether `ESC` goes to Emacs/Evil or the terminal program
@@ -265,6 +276,7 @@ For terminal programs that need `ESC` directly, such as Vim opened by `git commi
 7. `xq-lang`
 8. `xq-format`
 9. `xq-git`
-10. `xq-terminal`
-11. `xq-org`
-12. `xq-keybinds`
+10. `xq-code-anchor`
+11. `xq-terminal`
+12. `xq-org`
+13. `xq-keybinds`

@@ -1,9 +1,15 @@
 ;;; xq-terminal.el --- Terminal experience improvements -*- lexical-binding: t; -*-
 
+(require 'project)
+
+(eval-and-compile
+  (declare-function vterm "vterm")
+  (defvar vterm-max-scrollback))
+
 (defun xq/terminal-project-root ()
   "Return current project root directory, or `default-directory'."
   (if-let* ((project (project-current nil))
-            (root (car (project-roots project))))
+            (root (project-root project)))
       root
     default-directory))
 

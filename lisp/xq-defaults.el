@@ -1,5 +1,9 @@
 ;;; xq-defaults.el --- Sane defaults for general usage -*- lexical-binding: t; -*-
 
+(eval-and-compile
+  (declare-function straight-use-package "straight")
+  (declare-function exec-path-from-shell-initialize "exec-path-from-shell"))
+
 ;; On macOS GUI Emacs, import shell PATH so external tools (e.g. LSP servers) resolve.
 (when (memq window-system '(mac ns))
   (ignore-errors

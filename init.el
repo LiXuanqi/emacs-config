@@ -1,5 +1,9 @@
 ;;; init.el --- Emacs configuration entry point -*- lexical-binding: t; -*-
 
+;; Ensure all relative paths resolve to this config directory, even in batch mode.
+(setq user-emacs-directory
+      (file-name-directory (or load-file-name buffer-file-name user-init-file)))
+
 ;; Keep package.el from activating packages before straight.el bootstraps.
 (setq package-enable-at-startup nil)
 ;; Prefer newer .el files over stale compiled .elc files.
@@ -36,6 +40,7 @@
 
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
+(require 'use-package)
 
 ;; Keep Customize output out of init.el to reduce merge noise.
 (setq custom-file (locate-user-emacs-file "custom.el"))
@@ -54,6 +59,7 @@
 (require 'xq-lang)
 (require 'xq-format)
 (require 'xq-git)
+(require 'xq-code-anchor)
 (require 'xq-terminal)
 (require 'xq-org)
 (require 'xq-keybinds)
