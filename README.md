@@ -39,6 +39,7 @@ General defaults for most users:
 - on macOS GUI Emacs, initialize `exec-path-from-shell` when available
 - stores backup files (`filename~`) under `~/.config/emacs/backups/`
 - stores auto-save files under `~/.config/emacs/auto-saves/`
+- uses short confirmation prompts (`y`/`n` instead of `yes`/`no`)
 - keeps project working trees clean of editor-generated files
 
 ### `xq-ui` (`lisp/xq-ui.el`)

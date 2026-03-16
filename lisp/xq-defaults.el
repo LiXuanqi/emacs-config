@@ -23,5 +23,8 @@
       auto-save-file-name-transforms `((".*" ,xq/auto-save-directory t))
       auto-save-list-file-prefix (expand-file-name ".saves-" xq/auto-save-directory))
 
+;; Accept y/n answers instead of requiring full yes/no confirmations.
+(setq use-short-answers t)
+
 (provide 'xq-defaults)
 ;;; xq-defaults.el ends here
