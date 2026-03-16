@@ -9,6 +9,7 @@ org-roam.db
 bookmarks.eld
 bookmarks.eld~
 history
+transient/
 projects.eld
 tree-sitter/
 backups/

@@ -116,6 +116,7 @@ Terminal workflow improvements:
 - project-root `vterm` command
 - `vterm` as default terminal workflow
 - increased terminal scrollback for longer sessions
+- uses `evil-collection`'s `vterm` integration
 
 ### `xq-org` (`lisp/xq-org.el`)
 
@@ -173,6 +174,7 @@ Current leader key mappings:
 - `SPC g b`: `magit-blame-addition`
 - `SPC t` group: terminal commands
 - `SPC t t`: `xq/terminal-vterm-here`
+- in `vterm`, `C-c C-z`: toggle whether `ESC` goes to Emacs/Evil or the terminal program
 - `SPC n` group: notes commands
 - `SPC n n`: `org-roam-dailies-goto-today`
 - `SPC n a`: `org-agenda`
@@ -238,6 +240,17 @@ Basic day-to-day flow:
 Useful extras:
 - View current-file history: `SPC g l`.
 - Blame current file/line context: `SPC g b` (toggle off with `q` in blame view).
+
+## Vterm Workflow
+
+`vterm` uses `evil-collection-vterm`, so there are two distinct behaviors:
+- terminal input mode: keys go to the running terminal program
+- Evil normal state: keys control the `vterm` buffer in Emacs
+
+For terminal programs that need `ESC` directly, such as Vim opened by `git commit`:
+- press `C-c C-z` once to send `ESC` to the terminal program instead of Emacs
+- use Vim normally (`ESC`, `:q`, `:wq`, and so on)
+- press `C-c C-z` again when you want `ESC` to return to Emacs/Evil control
 
 ## Startup Flow
 
