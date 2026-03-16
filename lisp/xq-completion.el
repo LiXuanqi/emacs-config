@@ -5,7 +5,7 @@
   (savehist-mode 1))
 
 (use-package vertico
-  :init
+  :config
   (vertico-mode 1))
 
 (use-package orderless

@@ -49,19 +49,15 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; Load feature modules.
-(require 'xq-defaults)
-(require 'xq-ui)
-(require 'xq-which-key)
-(require 'xq-evil)
-(require 'xq-completion)
-(require 'xq-treesit)
-(require 'xq-lang)
-(require 'xq-format)
-(require 'xq-git)
-(require 'xq-code-anchor)
-(require 'xq-terminal)
-(require 'xq-org)
-(require 'xq-keybinds)
+;; Load machine-local override support before shared feature modules.
+(require 'xq-overrides)
+(xq/load-local-file xq/local-pre-init-file)
+
+;; Load feature modules, allowing machine-local files to disable modules first.
+(dolist (feature xq/modules)
+  (xq/require-module feature))
+
+;; Load machine-local overrides last so they can intentionally win.
+(xq/load-local-file xq/local-post-init-file)
 
 ;;; init.el ends here

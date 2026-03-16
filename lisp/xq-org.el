@@ -1,7 +1,9 @@
 ;;; xq-org.el --- Org mode setup for notes -*- lexical-binding: t; -*-
 
-(defconst xq/org-directory (expand-file-name "notes" (getenv "HOME"))
-  "Base directory for Org files.")
+(defcustom xq/org-directory (expand-file-name "notes" (getenv "HOME"))
+  "Base directory for Org files."
+  :type 'directory
+  :group 'xq)
 
 (use-package org
   :straight (:type built-in)

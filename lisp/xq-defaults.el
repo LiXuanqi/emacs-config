@@ -11,11 +11,15 @@
     (require 'exec-path-from-shell)
     (exec-path-from-shell-initialize)))
 
-(defconst xq/backup-directory (expand-file-name "backups/" user-emacs-directory)
-  "Directory for backup files (e.g. filename~).")
+(defcustom xq/backup-directory (expand-file-name "backups/" user-emacs-directory)
+  "Directory for backup files (e.g. filename~)."
+  :type 'directory
+  :group 'xq)
 
-(defconst xq/auto-save-directory (expand-file-name "auto-saves/" user-emacs-directory)
-  "Directory for auto-save files.")
+(defcustom xq/auto-save-directory (expand-file-name "auto-saves/" user-emacs-directory)
+  "Directory for auto-save files."
+  :type 'directory
+  :group 'xq)
 
 (unless (file-directory-p xq/backup-directory)
   (make-directory xq/backup-directory t))

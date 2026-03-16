@@ -5,7 +5,11 @@ Personal Emacs config built around `straight.el`, `use-package`, and modular `li
 ## Structure
 
 - `init.el`: bootstrap + module loader.
+- `Makefile`: thin wrappers for common batch checks and cleanup.
 - `lisp/`: feature modules (`xq-*.el`).
+- `lisp/xq-overrides.el`: shared helper for machine-local overrides and module gating.
+- `lisp/xq-local-example.el`: example snippets for local override files.
+- `tests/`: `ert` coverage for local helper behavior.
 - `AGENTS.md`: repository conventions for future changes.
 
 ## System Dependencies
@@ -31,6 +35,15 @@ Some Emacs packages in this config require external tools installed on your syst
 - `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
   - compiler toolchain for grammar builds (`cc`/Xcode Command Line Tools on macOS)
 
+## Common Commands
+
+- `make load`: verify `init.el` loads in batch mode.
+- `make test`: run `ert` tests.
+- `make byte-compile`: byte-compile local modules.
+- `make freeze`: write the current `straight.el` lockfile.
+- `make thaw`: restore packages from the lockfile.
+- `make clean-elc`: delete local `.elc` files outside `straight/`.
+
 ## Modules
 
 ### `xq-defaults` (`lisp/xq-defaults.el`)
@@ -41,6 +54,14 @@ General defaults for most users:
 - stores auto-save files under `~/.config/emacs/auto-saves/`
 - uses short confirmation prompts (`y`/`n` instead of `yes`/`no`)
 - keeps project working trees clean of editor-generated files
+
+### `xq-overrides` (`lisp/xq-overrides.el`)
+
+Machine-local override support:
+- defines the ordered `xq/modules` load list used by `init.el`
+- loads optional `lisp/xq-local-pre.el` before shared modules
+- loads optional `lisp/xq-local-post.el` after shared modules
+- provides helpers to enable/disable modules per machine
 
 ### `xq-ui` (`lisp/xq-ui.el`)
 
@@ -236,7 +257,69 @@ Org editing tips:
 
 - Add `avy` for fast jump-to-char/word/line motions (for example, leader map under `SPC j`).
 - Add `evil-snipe` for enhanced Vim-style quick character motions.
-- Add machine-local override loading (`local.el`) for per-laptop custom settings.
+
+## Machine-Local Overrides
+
+This config now supports two untracked machine-local files:
+
+- `lisp/xq-local-pre.el`: loaded before shared modules. Use this to disable entire modules or set variables that package `:init` blocks should read.
+- `lisp/xq-local-post.el`: loaded after shared modules. Use this for last-write-wins overrides after packages have already been configured.
+
+Both files are ignored by Git. Shared config stays in tracked `lisp/xq-*.el` modules; laptop-specific behavior stays local.
+
+Typical setup:
+
+```elisp
+;; lisp/xq-local-pre.el
+(setq xq/machine
+      (pcase (system-name)
+        ("work-mbp" 'work)
+        ("home-mbp" 'home)
+        (_ 'default)))
+
+(when (eq xq/machine 'work)
+  (xq/disable-module 'xq-org)
+  (setq xq/org-directory (expand-file-name "work-notes" (getenv "HOME"))))
+```
+
+```elisp
+;; lisp/xq-local-post.el
+(when (eq xq/machine 'home)
+  (setq doom-modeline-minor-modes t)
+  (load-theme 'doom-nord t))
+```
+
+For more complicated cases, split plugin defaults so they are easy to override:
+
+- Keep each plugin or concern in its own `xq-*.el` module.
+- Put machine-agnostic defaults in the shared module.
+- Read user-tunable variables in `:init`, then set those variables from `xq-local-pre.el`.
+- Use `xq/disable-module` when a machine should not load a plugin at all.
+- Use `xq-local-post.el` when a package must be tweaked after it finishes loading.
+
+Example plugin-specific pattern:
+
+```elisp
+;; shared module: lisp/xq-org.el
+(defvar xq/org-enabled t
+  "Whether Org workflow features should be enabled on this machine.")
+
+(when xq/org-enabled
+  (use-package org
+    :straight (:type built-in)
+    :init
+    (setq org-directory xq/org-directory)))
+```
+
+```elisp
+;; machine-local pre-init file
+(setq xq/org-enabled (not (eq xq/machine 'work)))
+```
+
+That gives you two levels of control:
+
+- module-level: load or skip a whole feature module
+- plugin-level: keep the module but vary package settings or package activation by machine
 
 ## Magit Workflow
 

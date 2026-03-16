@@ -16,3 +16,5 @@ backups/
 tramp
 .cache/
 .lsp-session-*
+lisp/xq-local-pre.el
+lisp/xq-local-post.el
