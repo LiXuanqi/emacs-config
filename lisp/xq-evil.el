@@ -13,6 +13,10 @@
 (use-package evil-collection
   :after evil
   :config
+  ;; Keep `vterm' in its native terminal-oriented keymap instead of
+  ;; installing Evil bindings that intercept shell input.
+  (setq evil-collection-mode-list
+        (delq 'vterm evil-collection-mode-list))
   (evil-collection-init))
 
 (provide 'xq-evil)

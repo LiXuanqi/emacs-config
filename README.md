@@ -145,7 +145,9 @@ Terminal workflow improvements:
 - project-root `vterm` command
 - `vterm` as default terminal workflow
 - increased terminal scrollback for longer sessions
-- uses `evil-collection`'s `vterm` integration
+- keeps `vterm` on native `vterm` bindings instead of Evil bindings
+- disables local Evil state inside `vterm` buffers
+- `C-c C-z` toggles between terminal input and Emacs/Evil command mode
 
 ### `xq-org` (`lisp/xq-org.el`)
 
@@ -207,7 +209,9 @@ Current leader key mappings:
 - `SPC g o s`: `code-anchor-open-sourcegraph`
 - `SPC t` group: terminal commands
 - `SPC t t`: `xq/terminal-vterm-here`
-- in `vterm`, `C-c C-z`: toggle whether `ESC` goes to Emacs/Evil or the terminal program
+- in `vterm`, most keys go directly to the terminal program
+- in `vterm`, Emacs keeps `vterm` control prefixes such as `C-c`/`C-x` and commands like `C-c C-t`
+- in `vterm`, `C-c C-z` toggles between terminal mode and Emacs/Evil command mode
 - `SPC n` group: notes commands
 - `SPC n n`: `org-roam-dailies-goto-today`
 - `SPC n a`: `org-agenda`
@@ -338,14 +342,22 @@ Useful extras:
 
 ## Vterm Workflow
 
-`vterm` uses `evil-collection-vterm`, so there are two distinct behaviors:
-- terminal input mode: keys go to the running terminal program
-- Evil normal state: keys control the `vterm` buffer in Emacs
+`vterm` does not use `evil-collection-vterm` in this config.
 
-For terminal programs that need `ESC` directly, such as Vim opened by `git commit`:
-- press `C-c C-z` once to send `ESC` to the terminal program instead of Emacs
-- use Vim normally (`ESC`, `:q`, `:wq`, and so on)
-- press `C-c C-z` again when you want `ESC` to return to Emacs/Evil control
+Key routing in `vterm`:
+- sent to the terminal program: normal typing, `ESC`, `RET`, `TAB`, arrows, and most `C-...` / `M-...` keys
+- handled by Emacs/`vterm`: reserved prefixes and `vterm` commands such as `C-c`, `C-x`, `C-u`, `C-g`, `C-h`, `C-l`, `M-x`, `M-o`, `C-y`, `M-y`
+
+Useful `vterm` commands that stay in Emacs:
+- `C-c C-z`: toggle between terminal mode and Emacs/Evil command mode
+- `C-c C-t`: toggle `vterm-copy-mode`
+- `C-c C-r`: reset cursor point
+- `C-c C-n` / `C-c C-p`: next/previous prompt
+- `C-c C-l`: clear scrollback
+
+When `C-c C-z` switches to command mode, local Evil is enabled in the `vterm`
+buffer and leader mappings such as `SPC w |` work again. Press `C-c C-z` a
+second time to return to normal terminal input.
 
 ## Startup Flow
 
