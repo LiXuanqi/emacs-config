@@ -1,5 +1,8 @@
 ;;; xq-keybinds.el --- Leader keybindings -*- lexical-binding: t; -*-
 
+(declare-function xq/module-enabled-p "xq-overrides" (feature))
+(declare-function xq/leader-def "ext:general" (&rest args))
+
 (use-package general
   :after evil
   :config

@@ -1,5 +1,13 @@
 ;;; xq-evil.el --- Evil mode setup -*- lexical-binding: t; -*-
 
+(defun xq/evil-configure-word-syntax ()
+  "Treat hyphen and underscore as word constituents in the current buffer."
+  (modify-syntax-entry ?_ "w")
+  (modify-syntax-entry ?- "w"))
+
+(add-hook 'after-change-major-mode-hook
+          #'xq/evil-configure-word-syntax)
+
 (use-package evil
   :init
   (setq evil-want-integration t

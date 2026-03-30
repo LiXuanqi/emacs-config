@@ -81,6 +81,7 @@ Vim emulation and Evil integrations:
 - `evil-collection` for Evil keybindings across built-in modes
 - `C-u` scrolls up in Evil normal/motion states
 - split defaults tuned for Vim workflow (`vsplit` right, `split` below)
+- treats `foo-bar` and `foo_bar` as one word for Evil word motions in all modes
 
 ### `xq-completion` (`lisp/xq-completion.el`)
 

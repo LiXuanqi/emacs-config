@@ -12,14 +12,18 @@
 ;; Avoid noisy native-comp warnings from third-party packages like general.el.
 (when (boundp 'native-comp-async-report-warnings-errors)
   (setq native-comp-async-report-warnings-errors nil))
-(when (boundp 'native-comp-jit-compilation-deny-list)
-  (add-to-list 'native-comp-jit-compilation-deny-list "general\\.el\\'"))
-(when (boundp 'native-comp-deferred-compilation-deny-list)
-  (add-to-list 'native-comp-deferred-compilation-deny-list "general\\.el\\'"))
-(when (boundp 'native-comp-jit-compilation-deny-list)
-  (add-to-list 'native-comp-jit-compilation-deny-list "org-roam\\(?:-.*\\)?\\.el\\'"))
-(when (boundp 'native-comp-deferred-compilation-deny-list)
-  (add-to-list 'native-comp-deferred-compilation-deny-list "org-roam\\(?:-.*\\)?\\.el\\'"))
+
+(defun xq/add-native-comp-deny-pattern (pattern)
+  "Add PATTERN to native compilation deny lists when available."
+  (when (boundp 'native-comp-jit-compilation-deny-list)
+    (add-to-list 'native-comp-jit-compilation-deny-list pattern))
+  (when (boundp 'native-comp-deferred-compilation-deny-list)
+    (add-to-list 'native-comp-deferred-compilation-deny-list pattern)))
+
+(dolist (pattern '("general\\.el\\'"
+                   "go-mode\\.el\\'"
+                   "org-roam\\(?:-.*\\)?\\.el\\'"))
+  (xq/add-native-comp-deny-pattern pattern))
 
 (defvar bootstrap-version)
 (let ((bootstrap-file

@@ -2,6 +2,7 @@
 
 (let ((test-directory
        (file-name-directory (or load-file-name buffer-file-name default-directory))))
+  (setq load-prefer-newer t)
   (add-to-list 'load-path test-directory)
   (add-to-list 'load-path (expand-file-name ".." test-directory))
   (add-to-list 'load-path (expand-file-name "../lisp" test-directory)))

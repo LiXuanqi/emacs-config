@@ -49,6 +49,10 @@ fully loaded."
   "Return non-nil when FEATURE should be loaded."
   (memq feature xq/modules))
 
+(defun xq/module-source-file (feature)
+  "Return the source file path for FEATURE in `user-emacs-directory'."
+  (expand-file-name (format "lisp/%s.el" feature) user-emacs-directory))
+
 (defun xq/disable-module (feature)
   "Remove FEATURE from `xq/modules'."
   (setq xq/modules (delq feature xq/modules)))
@@ -68,7 +72,11 @@ When AFTER is non-nil, insert FEATURE after that module; otherwise append it."
 (defun xq/require-module (feature)
   "Require FEATURE when it is enabled in `xq/modules'."
   (when (xq/module-enabled-p feature)
-    (require feature)))
+    (unless (featurep feature)
+      (let ((source-file (xq/module-source-file feature)))
+        (if (file-exists-p source-file)
+            (load source-file nil 'nomessage t)
+          (require feature))))))
 
 (provide 'xq-overrides)
 ;;; xq-overrides.el ends here
