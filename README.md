@@ -79,6 +79,7 @@ Enables `which-key` to show available keybindings after prefix keys.
 Vim emulation and Evil integrations:
 - `evil` for modal editing
 - `evil-collection` for Evil keybindings across built-in modes
+- `C-u` scrolls up in Evil normal/motion states
 - split defaults tuned for Vim workflow (`vsplit` right, `split` below)
 
 ### `xq-completion` (`lisp/xq-completion.el`)

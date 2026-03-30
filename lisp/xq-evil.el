@@ -4,6 +4,7 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
+        evil-want-C-u-scroll t
         evil-vsplit-window-right t
         evil-split-window-below t
         evil-undo-system 'undo-redo)
