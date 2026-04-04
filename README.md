@@ -35,6 +35,57 @@ Some Emacs packages in this config require external tools installed on your syst
 - `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
   - compiler toolchain for grammar builds (`cc`/Xcode Command Line Tools on macOS)
 
+## New Laptop Setup
+
+Use this checklist on a fresh machine.
+
+1. Install Emacs, Git, and the system dependencies you actually need from the list above.
+2. Clone this repo to `~/.config/emacs`:
+
+   ```sh
+   mkdir -p ~/.config
+   git clone <your-repo-url> ~/.config/emacs
+   ```
+
+3. Make Emacs load this config by default. The simplest approach is to point `~/.emacs.d` at this repo:
+
+   ```sh
+   ln -sfn ~/.config/emacs ~/.emacs.d
+   ```
+
+4. If you use Org notes on this machine, create the expected directories:
+
+   ```sh
+   mkdir -p ~/notes/roam ~/notes/daily
+   ```
+
+5. If this laptop needs machine-local behavior, create one or both untracked override files and copy snippets from `lisp/xq-local-example.el`:
+
+   ```text
+   ~/.config/emacs/lisp/xq-local-pre.el
+   ~/.config/emacs/lisp/xq-local-post.el
+   ```
+
+6. Bootstrap packages and verify the config loads:
+
+   ```sh
+   cd ~/.config/emacs
+   make load
+   ```
+
+   The first run downloads `straight.el` and package repos, so it needs network access.
+
+7. Start Emacs normally. On first interactive startup, install any tree-sitter grammars you want with `M-x treesit-install-language-grammar`.
+8. Run the repo checks once the initial package install finishes:
+
+   ```sh
+   cd ~/.config/emacs
+   make test
+   make byte-compile
+   ```
+
+9. Optional: if you want to pin the current package set for this laptop, run `make freeze`. If you later add a committed `straight/versions/default.el` lockfile, `make thaw` restores that package set.
+
 ## Common Commands
 
 - `make load`: verify `init.el` loads in batch mode.
