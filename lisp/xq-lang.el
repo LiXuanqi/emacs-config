@@ -20,6 +20,11 @@
   :defer t
   :mode "\\.go\\'")
 
+(use-package terraform-mode
+  :defer t
+  :mode (("\\.tf\\'" . terraform-mode)
+         ("\\.tfvars\\'" . terraform-mode)))
+
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
@@ -44,6 +49,9 @@
 (add-hook 'typescript-mode-hook #'xq/lang-typescript-setup)
 (add-hook 'typescript-ts-mode-hook #'xq/lang-typescript-setup)
 (add-hook 'tsx-ts-mode-hook #'xq/lang-typescript-setup)
+
+(autoload 'xq/lang-terraform-setup "xq-lang-terraform" nil t)
+(add-hook 'terraform-mode-hook #'xq/lang-terraform-setup)
 
 (provide 'xq-lang)
 ;;; xq-lang.el ends here

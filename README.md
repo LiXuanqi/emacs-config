@@ -30,6 +30,8 @@ Some Emacs packages in this config require external tools installed on your syst
   - `gopls` (usually via `go install golang.org/x/tools/gopls@latest`)
 - `lisp/xq-lang.el` (`lsp-mode` C++ server):
   - `clangd` (usually via your package manager, for example Homebrew `llvm` on macOS)
+- `lisp/xq-lang.el` (`lsp-mode` Terraform server):
+  - `terraform-ls` (usually via your package manager, for example Homebrew `hashicorp/tap/terraform-ls` on macOS)
 - `lisp/xq-keybinds.el` search command (`consult-ripgrep` bound to `SPC s g`):
   - `ripgrep` (`rg`)
 - `lisp/xq-treesit.el` (`treesit-install-language-grammar`):
@@ -170,6 +172,7 @@ Language-specific modules:
 - `lisp/xq-lang-cpp.el`: C++ defaults + `lsp-deferred`, plus CMake/compile commands project-root config
 - `lisp/xq-lang-rust.el`: Rust defaults
 - `lisp/xq-lang-typescript.el`: TypeScript/TSX defaults + `lsp-deferred`
+- `lisp/xq-lang-terraform.el`: Terraform defaults + `lsp-deferred`, plus `.terraform.lock.hcl` project-root config
 
 ### `xq-format` (`lisp/xq-format.el`)
 
