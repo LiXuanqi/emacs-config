@@ -119,7 +119,7 @@ Machine-local override support:
 ### `xq-ui` (`lisp/xq-ui.el`)
 
 UI configuration:
-- startup/UI defaults: disable menu/tool/scroll bars, enable line/column indicators, enable global line numbers, start maximized
+- startup/UI defaults: disable menu/tool/scroll bars, enable line/column indicators, enable global line numbers
 - theme via `doom-themes` (`doom-one`)
 - mode line via `doom-modeline` with compact defaults
 
@@ -163,6 +163,7 @@ Language/LSP entrypoint:
 - configures `lsp-mode` defaults
 - configures `lsp-pyright` integration
 - sets `lsp-file-watch-threshold` to `10000`
+- uses built-in `go-ts-mode` for Go files when available, falling back to `go-mode`
 - associates `.ts` and `.tsx` files with built-in TypeScript tree-sitter modes
 - lazy-loads language-specific modules only when matching major modes start
 

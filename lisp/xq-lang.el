@@ -16,9 +16,11 @@
   :defer t
   :mode "\\.rs\\'")
 
-(use-package go-mode
-  :defer t
-  :mode "\\.go\\'")
+(if (fboundp 'go-ts-mode)
+    (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+  (use-package go-mode
+    :defer t
+    :mode "\\.go\\'"))
 
 (use-package terraform-mode
   :defer t

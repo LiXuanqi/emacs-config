@@ -3,8 +3,7 @@
 (use-package emacs
   :init
   (setq inhibit-startup-screen t
-        ring-bell-function 'ignore
-        initial-frame-alist '((fullscreen . maximized)))
+        ring-bell-function 'ignore)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
